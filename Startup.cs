@@ -59,12 +59,13 @@ namespace BlazorServerTwitchAuth
 				options.TokenValidationParameters.NameClaimType = "preferred_username";
 			});
 
-			services.AddAuthorization(options =>
+			/*services.AddAuthorization(options =>
 			{
 				options.FallbackPolicy = new AuthorizationPolicyBuilder()
 					.RequireAuthenticatedUser()
 					.Build();
-			});
+			});*/
+
 
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
@@ -95,6 +96,7 @@ namespace BlazorServerTwitchAuth
 
 			app.UseEndpoints(endpoints =>
 			{
+				endpoints.MapRazorPages();
 				endpoints.MapBlazorHub();
 				endpoints.MapFallbackToPage("/_Host");
 			});
